@@ -1,4 +1,4 @@
-import LoginStatus from './LoginStatus';
+import LoginStatus from "./LoginStatus";
 
 const NavBar = () => {
   return (

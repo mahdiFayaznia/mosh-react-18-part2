@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState } from "react";
 
 const Counter = () => {
   const [value, setValue] = useState(0);
@@ -12,10 +12,7 @@ const Counter = () => {
       >
         Increment
       </button>
-      <button
-        onClick={() => setValue(0)}
-        className="btn btn-primary mx-1"
-      >
+      <button onClick={() => setValue(0)} className="btn btn-primary mx-1">
         Reset
       </button>
     </div>
