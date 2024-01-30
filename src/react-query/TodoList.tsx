@@ -17,7 +17,8 @@ const TodoList = () => {
 
   // const query = useQuery({
   // const { data } = useQuery({
-  const { data: todos } = useQuery({
+  // const { data: todos, error } = useQuery({
+  const { data: todos, error } = useQuery<Todo[], Error>({
     queryKey: ["todos"],
     // queryFn: () =>
     //   axios
@@ -37,6 +38,7 @@ const TodoList = () => {
   // }, []);
 
   // if (error) return <p>{error}</p>;
+  if (error) return <p>{error.message}</p>;
 
   return (
     <ul className="list-group">
