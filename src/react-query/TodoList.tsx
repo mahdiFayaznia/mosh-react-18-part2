@@ -50,11 +50,11 @@ const TodoList = () => {
   if (isLoading) return <p>Loading...</p>;
 
   return (
-    <ul className="list-group">
+    <ul className="menu bg-base-200 w-full rounded-box">
       {/* {data?.map((todo) => ( */}
       {todos?.map((todo) => (
-        <li key={todo.id} className="list-group-item">
-          {todo.title}
+        <li key={todo.id}>
+          <a>{todo.title}</a>
         </li>
       ))}
     </ul>
