@@ -9,8 +9,8 @@ import "./index.css";
 //   defaultOptions: {
 //     queries: {
 //       retry: 3, // 3 retry after fail (default: 3)
-//       cacheTime: 300_000, // remove result from cache after 5m (default: 300_000)
-//       staleTime: 10 * 1000, // 10s (default: 0)
+//       cacheTime: 300_000, // remove result from cache after 300_000ms/5m (default: 300_000ms/5m)
+//       staleTime: 10 * 1000, // the data will fresh for 10s (default: 0)
 //       refetchOnWindowFocus: false, // (default: true)
 //       refetchOnReconnect: false, // (default: true)
 //       refetchOnMount: false, // (default: true)

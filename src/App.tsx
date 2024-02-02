@@ -6,13 +6,13 @@ function App() {
   // return <h1>React Starter Project</h1>;
   return (
     <>
-      <h1 className="my-5">TodoList</h1>
-      <TodoList />
+      <h1 className="my-5 text-4xl">PostList</h1>
+      <PostList />
 
       <hr className="my-5" />
 
-      <h1 className="my-5">PostList</h1>
-      <PostList />
+      <h1 className="my-5 text-4xl">TodoList</h1>
+      <TodoList />
     </>
   );
 }
