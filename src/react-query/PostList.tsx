@@ -10,7 +10,10 @@ import usePosts from "./hooks/usePosts";
 // }
 
 const PostList = () => {
-  const [userId, setUserId] = useState<number>();
+  // const [userId, setUserId] = useState<number>();
+
+  const pageSize = 10;
+  const [page, setPage] = useState(1);
 
   // const [posts, setPosts] = useState<Post[]>([]);
   // const [error, setError] = useState("");
@@ -24,7 +27,8 @@ const PostList = () => {
 
   // if (error) return <p>{error}</p>;
 
-  const { data: posts, error, isLoading } = usePosts(userId);
+  // const { data: posts, error, isLoading } = usePosts(userId);
+  const { data: posts, error, isLoading } = usePosts({ page, pageSize });
 
   if (error) return <p>{error.message}</p>;
 
@@ -32,7 +36,7 @@ const PostList = () => {
 
   return (
     <>
-      <select
+      {/* <select
         className="select select-bordered w-full max-w-xs mb-5"
         onChange={(event) => setUserId(parseInt(event.target.value))}
         value={userId}
@@ -41,7 +45,7 @@ const PostList = () => {
         <option value="1">User 1</option>
         <option value="2">User 2</option>
         <option value="3">User 3</option>
-      </select>
+      </select> */}
       <ul className="menu bg-base-200 w-full rounded-box">
         {posts?.map((post) => (
           <li key={post.id}>
@@ -49,6 +53,19 @@ const PostList = () => {
           </li>
         ))}
       </ul>
+
+      <div className="my-3 space-x-3">
+        <button
+          className="btn btn-primary"
+          disabled={page === 1}
+          onClick={() => setPage(page - 1)}
+        >
+          Previous
+        </button>
+        <button className="btn btn-primary" onClick={() => setPage(page + 1)}>
+          Next
+        </button>
+      </div>
     </>
   );
 };
