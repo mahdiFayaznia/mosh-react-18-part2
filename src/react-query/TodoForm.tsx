@@ -27,6 +27,8 @@ const TodoForm = () => {
         savedTodo,
         ...(todos || []),
       ]);
+
+      if (ref.current) ref.current.value = ""; // empty the input after add
     },
   });
 
@@ -61,7 +63,9 @@ const TodoForm = () => {
           type="text"
           className="input input-bordered w-full max-w-md"
         />
-        <button className="btn btn-primary">Add</button>
+        <button className="btn btn-primary" disabled={addTodo.isLoading}>
+          {addTodo.isLoading ? "Adding..." : "Add"}
+        </button>
       </form>
     </>
   );
