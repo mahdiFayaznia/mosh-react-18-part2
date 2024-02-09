@@ -3,15 +3,32 @@ import { useRef } from "react";
 import { Todo } from "./hooks/useTodos";
 import axios from "axios";
 
+interface AddTodoContext {
+  previousTodos: Todo[];
+}
+
 const TodoForm = () => {
   const queryClient = useQueryClient(); // access to queryClient
 
-  // useMutation: <data that get from back-end, error, data that send to back-end>
-  const addTodo = useMutation<Todo, Error, Todo>({
+  // useMutation: <data that get from back-end, error, data that send to back-end, context>
+  const addTodo = useMutation<Todo, Error, Todo, AddTodoContext>({
     mutationFn: (todo: Todo) =>
       axios
-        .post<Todo>("https://jsonplaceholder.typicode.com/todos", todo)
+        .post<Todo>("https://jsonplaceholder.typicode.com/todosx", todo)
         .then((res) => res.data),
+
+    onMutate: (newTodo: Todo) => {
+      const previousTodos = queryClient.getQueryData<Todo[]>(["todos"]) || [];
+
+      queryClient.setQueryData<Todo[]>(["todos"], (todos) => [
+        newTodo,
+        ...(todos || []),
+      ]);
+
+      if (ref.current) ref.current.value = ""; // empty the input after add
+
+      return { previousTodos };
+    },
 
     // onSuccess: (object that get from back-end, object that send to back-end)
     onSuccess: (savedTodo, newTodo) => {
@@ -23,12 +40,21 @@ const TodoForm = () => {
       // });
 
       // APPROACH 2: Updating the data in the cache
-      queryClient.setQueriesData<Todo[]>(["todos"], (todos) => [
-        savedTodo,
-        ...(todos || []),
-      ]);
+      // queryClient.setQueryData<Todo[]>(["todos"], (todos) => [
+      //   savedTodo,
+      //   ...(todos || []),
+      // ]);
 
-      if (ref.current) ref.current.value = ""; // empty the input after add
+      // replace the todo that in UI to todo that in back-end
+      queryClient.setQueryData<Todo[]>(["todos"], (todos) =>
+        todos?.map((todo) => (todo === newTodo ? savedTodo : todo))
+      );
+    },
+
+    onError: (error, newTodo, context) => {
+      if (!context) return;
+
+      queryClient.setQueryData<Todo[]>(["todos"], context.previousTodos);
     },
   });
 
