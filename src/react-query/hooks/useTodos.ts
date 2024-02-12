@@ -2,15 +2,16 @@ import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
 import { CACHE_KEY_TODOS } from "../constants";
 import APIClient from "../services/apiClient";
+import todoService, { Todo } from "../services/todoService";
 
-const apiClient = new APIClient<Todo>("/todos");
+// const apiClient = new APIClient<Todo>("/todos");
 
-export interface Todo {
-  id: number;
-  title: string;
-  userId: number;
-  completed: boolean;
-}
+// export interface Todo {
+//   id: number;
+//   title: string;
+//   userId: number;
+//   completed: boolean;
+// }
 
 const useTodos = () => {
   // const fetchTodos = () =>
@@ -23,7 +24,8 @@ const useTodos = () => {
     queryKey: CACHE_KEY_TODOS,
     // queryFn: fetchTodos,
     // queryFn: apiClient.getAll.bind(apiClient),
-    queryFn: apiClient.getAll,
+    // queryFn: apiClient.getAll,
+    queryFn: todoService.getAll,
     staleTime: 10 * 1000, // 10s
   });
 };
