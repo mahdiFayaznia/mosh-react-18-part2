@@ -94,8 +94,10 @@ const TodoForm = () => {
           type="text"
           className="input input-bordered w-full max-w-md"
         />
-        <button className="btn btn-primary" disabled={addTodo.isLoading}>
-          {addTodo.isLoading ? "Adding..." : "Add"}
+        {/* <button className="btn btn-primary" disabled={addTodo.isLoading}> */}
+        <button className="btn btn-primary">
+          {/* {addTodo.isLoading ? "Adding..." : "Add"} */}
+          Add
         </button>
       </form>
     </>
