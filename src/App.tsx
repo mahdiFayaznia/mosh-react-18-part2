@@ -12,12 +12,13 @@ import HomePage from "./state-management/HomePage";
 import TasksContext from "./state-management/contexts/tasksContext";
 import authReducer from "./state-management/reducers/authReducer";
 import AuthContext from "./state-management/contexts/authContext";
+import AuthProvider from "./state-management/AuthProvider";
 
 function App() {
   // return <h1>React Starter Project</h1>;
   const [tasks, tasksDispatch] = useReducer(tasksReducer, []);
 
-  const [user, authDispatch] = useReducer(authReducer, "");
+  // const [user, authDispatch] = useReducer(authReducer, "");
 
   return (
     <>
@@ -36,12 +37,19 @@ function App() {
       {/* <h1 className="my-5 text-4xl">LoginStatus</h1>
       <LoginStatus /> */}
 
-      <AuthContext.Provider value={{ user, dispatch: authDispatch }}>
+      {/* <AuthContext.Provider value={{ user, dispatch: authDispatch }}>
         <TasksContext.Provider value={{ tasks, dispatch: tasksDispatch }}>
           <NavBar />
           <HomePage />
         </TasksContext.Provider>
-      </AuthContext.Provider>
+      </AuthContext.Provider> */}
+
+      <AuthProvider>
+        <TasksContext.Provider value={{ tasks, dispatch: tasksDispatch }}>
+          <NavBar />
+          <HomePage />
+        </TasksContext.Provider>
+      </AuthProvider>
     </>
   );
 }
