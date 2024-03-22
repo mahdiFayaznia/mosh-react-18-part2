@@ -3,6 +3,7 @@ import PostList from "./react-query/PostList";
 import TodoForm from "./react-query/TodoForm";
 import TodoList from "./react-query/TodoList";
 import Counter from "./state-management/Counter";
+import LoginStatus from "./state-management/LoginStatus";
 import TaskList from "./state-management/TaskList";
 
 function App() {
@@ -21,8 +22,11 @@ function App() {
       {/* <h1 className="my-5 text-4xl">Counter</h1>
       <Counter /> */}
 
-      <h1 className="my-5 text-4xl">TaskList</h1>
-      <TaskList />
+      {/* <h1 className="my-5 text-4xl">TaskList</h1>
+      <TaskList /> */}
+
+      <h1 className="my-5 text-4xl">LoginStatus</h1>
+      <LoginStatus />
     </>
   );
 }
