@@ -1,4 +1,5 @@
 import { create } from "zustand";
+import { mountStoreDevtool } from "simple-zustand-devtools";
 
 interface CounterStore {
   counter1: number;
@@ -21,5 +22,8 @@ const useCounterStore = create<CounterStore>((set) => ({
   increment2: () => set((store2) => ({ counter2: store2.counter2 + 1 })), // property merge to other properties  -->  no need ...spread
   reset2: () => set(() => ({ counter2: 0 })), // property merge to other properties  -->  no need ...spread
 }));
+
+if (process.env.NODE_ENV === "development")
+  mountStoreDevtool("Counter Store", useCounterStore); // mountStoreDevtool(name, customHook);
 
 export default useCounterStore;
