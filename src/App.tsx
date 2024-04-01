@@ -43,6 +43,8 @@ function App() {
 
       <AuthProvider>
         <TasksProvider>
+          <Counter />
+          <div className="divider"></div>
           <NavBar />
           <HomePage />
         </TasksProvider>
