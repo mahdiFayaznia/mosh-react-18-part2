@@ -6,12 +6,12 @@ interface CounterStore {
   reset: () => void;
 }
 
-// set --> update state of store
-// set => ({}) --> return an object
+// set  -->  a function for update state of store  -->  set((currentState) => (nextState))
+// set => ({})  -->  return an object of initial state of store
 const useCounterStore = create<CounterStore>((set) => ({
   counter: 0,
   increment: () => set((store) => ({ counter: store.counter + 1 })), // property merge to other properties  -->  no need ...spread
-  // reset: () => set((store) => ({ counter: 0 })), // property merge to other properties  -->  no need ...spread
+  // reset: () => set((store) => ({ counter: 0 })),
   reset: () => set(() => ({ counter: 0 })), // property merge to other properties  -->  no need ...spread
 }));
 

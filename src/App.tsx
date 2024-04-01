@@ -41,14 +41,21 @@ function App() {
         </TasksContext.Provider>
       </AuthContext.Provider> */}
 
-      <AuthProvider>
+      {/* <AuthProvider>
         <TasksProvider>
           <Counter />
           <div className="divider"></div>
           <NavBar />
           <HomePage />
         </TasksProvider>
-      </AuthProvider>
+      </AuthProvider> */}
+
+      <TasksProvider>
+        <Counter />
+        <div className="divider"></div>
+        <NavBar />
+        <HomePage />
+      </TasksProvider>
     </>
   );
 }
