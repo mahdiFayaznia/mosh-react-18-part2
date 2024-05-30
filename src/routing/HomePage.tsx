@@ -5,7 +5,9 @@ const HomePage = () => {
         Lorem ipsum dolor sit amet consectetur, adipisicing elit. Incidunt,
         mollitia!
       </p>
-      <a href="/users">Users</a>
+      <a href="/users" className="btn btn-primary">
+        Users
+      </a>
     </>
   );
 };
