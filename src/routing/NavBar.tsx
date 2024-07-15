@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 const NavBar = () => {
   return (
@@ -12,13 +12,28 @@ const NavBar = () => {
       <div className="flex-none" id="navbarNav">
         <ul className="menu menu-horizontal">
           <li>
-            <Link to="/">Home</Link>
+            {/* override classes when link is active */}
+            {/* <NavLink
+              to="/"
+              className={({ isActive }) => (isActive ? "active" : "")}
+            >
+              Home
+            </NavLink> */}
+            <NavLink to="/">Home</NavLink>
+            {/* <Link to="/">Home</Link> */}
             {/* <a className="nav-link active" href="#">
               Home
             </a> */}
           </li>
           <li>
-            <Link to="/users">Users</Link>
+            {/* override classes when link is active */}
+            {/* <NavLink
+              to="/users"
+              className={({ isActive }) => (isActive ? "active" : "")}
+            >
+              Users
+            </NavLink> */}
+            <NavLink to="/users">Users</NavLink>
             {/* <a className="nav-link" href="#">
               Users
             </a> */}
