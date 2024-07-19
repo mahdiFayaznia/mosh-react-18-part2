@@ -29,9 +29,13 @@ const router = createBrowserRouter([
       // { path: "posts/:year/:month", element: <postsListPage /> },
     ],
   },
+
+  // layout-route
   {
+    // layout-route does NOT need path
     element: <PrivateRoutes />,
     children: [
+      // all the private/private-routes must be inside the layout-route children
       {
         path: "users",
         element: <UsersPage />,
@@ -39,6 +43,7 @@ const router = createBrowserRouter([
       },
     ],
   },
+  // /layout-route
 ]);
 
 export default router;
